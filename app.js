@@ -64,20 +64,5 @@ app.listen(port, function() {
     console.log(`Server is listening on port ${port}`);
   })
 
-// note that typically the variables here are `req` and `res` but we are using `request` and `response` for clarity
-const server = http.createServer(function(request, response) {
-  const parsedUrl = url.parse(request.url, true);
-  const pathname = parsedUrl.pathname;
 
-    console.log("url", pathname);
-    if (pathname === '/') return respondText(request, response);
-    if (pathname === '/json') return respondJson(request, response);
-    if (pathname.match(/^\/echo/)) return respondEcho(request, response);
-
-  respondNotFound(request, response);
-});
-
-server.listen(port, function() {
-  console.log(`Server is listening on port ${port}`);
-});
 
